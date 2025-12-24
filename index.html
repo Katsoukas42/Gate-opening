@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<script>
+  const password = prompt("Enter password:");
+  if (password !== "1 2 M") {
+    document.documentElement.innerHTML = "";
+    alert("Access denied");
+    throw new Error("Access denied");
+  }
+</script>
 <html lang="el">
 <head>
 <meta charset="UTF-8">
