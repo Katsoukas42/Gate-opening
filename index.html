@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gate Access</title>
+
+<style>
+/* FLASHING BACKGROUND */
+@keyframes flashBG {
+  0%   { background-color: #0a7f3f; }
+  50%  { background-color: #000000; }
+  100% { background-color: #0a7f3f; }
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  animation: flashBG 1s infinite;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* TEXT */
+h1 { font-size: 36px; margin: 10px; }
+h2 { font-size: 22px; font-weight: normal; margin: 10px; }
+
+/* GATE ANIMATION */
+.gate {
+  width: 320px;
+  height: 40px;
+  position: relative;
+  margin: 30px 0;
+}
+
+.bar {
+  position: absolute;
+  width: 140px;
+  height: 6px;
+  background: white;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left {
+  left: 90px;
+  animation: openLeft 1.5s infinite;
+}
+
+.right {
+  right: 90px;
+  animation: openRight 1.5s infinite;
+}
+
+@keyframes openLeft {
+  0%   { transform: translate(0, -50%); }
+  50%  { transform: translate(-80px, -50%); }
+  100% { transform: translate(0, -50%); }
+}
+
+@keyframes openRight {
+  0%   { transform: translate(0, -50%); }
+  50%  { transform: translate(80px, -50%); }
+  100% { transform: translate(0, -50%); }
+}
+
+.valid {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.footer {
+  margin-top: 30px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Η ΠΟΡΤΑ ΑΝΟΙΓΕΙ</h1>
+<h2>THE DOOR IS OPENING</h2>
+
+<div class="gate">
+  <div class="bar left"></div>
+  <div class="bar right"></div>
+</div>
+
+<div class="valid">ΕΓΚΥΡΟ</div>
+<div class="footer">ΛL CORPORATION</div>
+
+</body>
+</html>
