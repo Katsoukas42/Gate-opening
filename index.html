@@ -103,5 +103,39 @@ h2 { font-size: 22px; font-weight: normal; margin: 10px; }
 <div class="valid">ΕΓΚΥΡΟ</div>
 <div class="footer">ΛL CORPORATION</div>
 
+  <script>
+let ctx;
+let running = false;
+
+function tone(freq, duration) {
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.frequency.value = freq;
+  osc.type = "square";
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  gain.gain.setValueAtTime(0.12, ctx.currentTime);
+  osc.start();
+  osc.stop(ctx.currentTime + duration);
+}
+
+function slowLoop() {
+  if (!running) return;
+
+  tone(900, 0.15);                // beep
+  setTimeout(() => {
+    tone(500, 0.2);               // boop
+  }, 900);                        // pause between beep & boop
+
+  setTimeout(slowLoop, 1800);     // full cycle
+}
+
+function startBeepBoop() {
+  if (running) return;
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  running = true;
+  slowLoop();
+}
+  </script>
 </body>
 </html>
